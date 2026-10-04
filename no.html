@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#101b1b">
+	<meta name="description" content="A concise introduction to the history of Pakistan and its relationships with key international partners.">
+	<title>History of Pakistan | Northlight</title>
+	<style>
+		:root {
+			color-scheme: dark;
+			font-family: "Segoe UI", sans-serif;
+			background: #101b1b;
+			color: #f4f2e9;
+			--muted: #b9c5bf;
+			--green: #9fe0b7;
+			--line: rgba(240, 245, 237, .16);
+		}
+
+		* { box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			min-height: 100vh;
+			margin: 0;
+			background: #101b1b;
+		}
+
+		.wallpaper,
+		.wallpaper::before,
+		.wallpaper::after {
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+		}
+
+		.wallpaper {
+			z-index: -1;
+			overflow: hidden;
+			background:
+				radial-gradient(ellipse at 52% 95%, rgba(29, 112, 88, .38), transparent 54%),
+				linear-gradient(145deg, #111919 5%, #1a302c 55%, #172126 100%);
+		}
+
+		.wallpaper::before,
+		.wallpaper::after {
+			content: "";
+			width: 150%;
+			height: 62%;
+			left: -25%;
+			top: 39%;
+			border-radius: 50%;
+			filter: blur(68px);
+			opacity: .47;
+			transform: rotate(-12deg);
+			background: linear-gradient(100deg, transparent 18%, rgba(91, 201, 153, .3) 43%, rgba(116, 175, 183, .2) 57%, transparent 78%);
+			animation: drift 24s ease-in-out infinite alternate;
+		}
+
+		.wallpaper::after {
+			top: 53%;
+			opacity: .3;
+			transform: rotate(9deg) scale(.9);
+			background: linear-gradient(100deg, transparent 22%, rgba(200, 176, 111, .18) 45%, rgba(81, 154, 139, .2) 61%, transparent 80%);
+			animation-duration: 32s;
+			animation-direction: alternate-reverse;
+		}
+
+		@keyframes drift {
+			from { translate: -4% -3%; scale: 1; }
+			to { translate: 6% 5%; scale: 1.08; }
+		}
+
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 22px;
+			min-height: 68px;
+			padding: 0 clamp(20px, 5vw, 72px);
+			border-bottom: 1px solid var(--line);
+			background: rgba(13, 21, 21, .84);
+			backdrop-filter: blur(18px);
+		}
+
+		.topbar-left {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			flex: 0 0 auto;
+		}
+
+		.home-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			min-height: 36px;
+			padding: 0 12px;
+			border: 1px solid #fff;
+			border-radius: 4px;
+			background: #fff;
+			color: #101b1b;
+			font-size: 12px;
+			font-weight: 700;
+			text-decoration: none;
+			transition: background .2s ease, border-color .2s ease;
+		}
+
+		.home-button:hover,
+		.home-button:focus-visible {
+			border-color: #d9e5dc;
+			background: #d9e5dc;
+		}
+
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			flex: 0 0 auto;
+			color: inherit;
+			font-size: 13px;
+			font-weight: 700;
+			letter-spacing: .1em;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+
+		.brand-mark {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: var(--green);
+			box-shadow: 0 0 16px rgba(159, 224, 183, .65);
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			overflow-x: auto;
+			white-space: nowrap;
+			scrollbar-width: thin;
+		}
+
+		nav a {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+			padding: 9px 12px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			color: #e0e8e1;
+			font-size: 12px;
+			text-decoration: none;
+			transition: border-color .2s ease, background .2s ease, color .2s ease;
+		}
+
+		nav a:hover,
+		nav a:focus-visible {
+			border-color: rgba(159, 224, 183, .38);
+			background: rgba(159, 224, 183, .1);
+			color: #fff;
+		}
+
+		nav a.flag-button {
+			position: relative;
+			justify-content: center;
+			width: 88px;
+			min-width: 88px;
+			height: 58px;
+			padding: 4px;
+			border: 1px solid rgba(255, 255, 255, .3);
+			border-radius: 4px;
+			color: #fff;
+			font-size: 25px;
+			text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+		}
+
+		nav a.flag-button:hover,
+		nav a.flag-button:focus-visible {
+			border-color: #fff;
+			color: #fff;
+			filter: brightness(1.15);
+		}
+
+		.flag-china { background: linear-gradient(135deg, #f31d32, #c90024); }
+		.flag-saudi { background: linear-gradient(135deg, #00a650, #006b37); }
+		.flag-turkiye { background: linear-gradient(135deg, #ff263c, #c90020); }
+		.flag-azerbaijan { background: linear-gradient(#00a8e0 0 33%, #ef3340 33% 66%, #3f9c35 66%); }
+		.flag-uae { background: linear-gradient(90deg, #ef3340 0 25%, transparent 25%), linear-gradient(#009a44 0 33%, #fff 33% 66%, #111 66%); }
+		.flag-qatar { background: linear-gradient(90deg, #fff 0 25%, #8a1538 25%); }
+		.flag-united-states { background: linear-gradient(90deg, #3c3b6e 0 42%, transparent 42%), repeating-linear-gradient(#b22234 0 5px, #fff 5px 10px); }
+		.flag-united-kingdom { background: linear-gradient(135deg, #c8102e 0 10%, #fff 10% 20%, #012169 20% 80%, #fff 80% 90%, #c8102e 90%); }
+
+		.flag-name {
+			position: absolute;
+			inset: auto 2px 3px;
+			padding: 3px 2px;
+			border-radius: 2px;
+			background: rgba(5, 12, 13, .82);
+			color: #fff;
+			font-size: 10px;
+			font-weight: 700;
+			line-height: 1.1;
+			text-align: center;
+			text-shadow: none;
+		}
+
+		main {
+			width: min(100% - 40px, 1040px);
+			margin: 0 auto;
+		}
+
+		.hero {
+			min-height: 390px;
+			padding: clamp(76px, 13vh, 138px) 0 70px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.eyebrow {
+			margin: 0 0 18px;
+			color: var(--green);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: .14em;
+			text-transform: uppercase;
+		}
+
+		h1, h2, h3, p { margin-top: 0; }
+
+		h1 {
+			max-width: 760px;
+			margin-bottom: 20px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(44px, 8vw, 82px);
+			font-weight: 400;
+			line-height: 1.02;
+		}
+
+		.hero-copy {
+			max-width: 680px;
+			margin-bottom: 28px;
+			color: #d2ddd5;
+			font-size: 17px;
+			line-height: 1.75;
+		}
+
+		.hero-link {
+			color: var(--green);
+			font-size: 13px;
+			font-weight: 650;
+			text-decoration-color: rgba(159, 224, 183, .48);
+			text-underline-offset: 4px;
+		}
+
+		section { padding: 60px 0; }
+
+		.section-heading {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			align-items: start;
+			margin-bottom: 34px;
+		}
+
+		.section-heading h2 {
+			margin: 0;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 34px;
+			font-weight: 400;
+		}
+
+		.section-heading p {
+			max-width: 640px;
+			margin: 5px 0 0;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.75;
+		}
+
+		.timeline {
+			border-top: 1px solid var(--line);
+		}
+
+		.moment {
+			display: grid;
+			grid-template-columns: 180px 1fr;
+			gap: 32px;
+			padding: 24px 0;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.moment time {
+			color: var(--green);
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		.moment h3 {
+			margin-bottom: 7px;
+			font-size: 16px;
+			font-weight: 650;
+		}
+
+		.moment p {
+			max-width: 650px;
+			margin-bottom: 0;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.7;
+		}
+
+		.partners {
+			border-top: 1px solid var(--line);
+			background: rgba(10, 17, 17, .2);
+		}
+
+		.partner-list {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			border-top: 1px solid var(--line);
+		}
+
+		.partner-list a {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			min-height: 60px;
+			padding: 0 16px;
+			border-bottom: 1px solid var(--line);
+			color: #f4f2e9;
+			font-size: 14px;
+			text-decoration: none;
+			transition: background .2s ease, color .2s ease;
+		}
+
+		.partner-list a:nth-child(odd) { border-right: 1px solid var(--line); }
+
+		.partner-list a:hover,
+		.partner-list a:focus-visible {
+			background: rgba(159, 224, 183, .08);
+			color: var(--green);
+		}
+
+		.partner-list span:last-child { color: var(--green); }
+
+		.partner-name {
+			display: inline-flex;
+			align-items: center;
+			gap: 9px;
+		}
+
+		.note {
+			margin: 20px 0 0;
+			color: var(--muted);
+			font-size: 12px;
+			line-height: 1.65;
+		}
+
+		footer {
+			padding: 22px 0 34px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		footer a { color: var(--green); text-underline-offset: 3px; }
+
+		.back-link {
+			display: inline-block;
+			margin-top: 28px;
+			color: var(--green);
+			font-size: 13px;
+			text-underline-offset: 4px;
+		}
+
+		@media (max-width: 700px) {
+			.topbar {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 8px;
+				padding: 14px 18px 10px;
+			}
+
+			nav { width: 100%; }
+			nav a { padding: 8px 10px; }
+			main { width: min(100% - 36px, 1040px); }
+			.hero { min-height: 0; padding: 76px 0 54px; }
+			.hero-copy { font-size: 15px; }
+			section { padding: 46px 0; }
+			.section-heading, .moment { grid-template-columns: 1fr; gap: 12px; }
+			.section-heading { margin-bottom: 24px; }
+			.section-heading h2 { font-size: 30px; }
+			.moment { gap: 8px; }
+			.partner-list { grid-template-columns: 1fr; }
+			.partner-list a:nth-child(odd) { border-right: 0; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after {
+				animation-duration: .01ms !important;
+				animation-iteration-count: 1 !important;
+				scroll-behavior: auto !important;
+				transition-duration: .01ms !important;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wallpaper" aria-hidden="true"></div>
+	<header class="topbar">
+		<div class="topbar-left">
+			<a class="home-button" href="no.html"><span aria-hidden="true">⌂</span>Home</a>
+			<a class="brand" href="no.html" aria-label="Northlight, back to history home">
+				<span class="brand-mark" aria-hidden="true"></span>
+				<span>Pakistan | A Brief History</span>
+			</a>
+		</div>
+		<nav aria-label="Pakistan history and partner navigation">
+			<a href="no.html?view=wars"><span aria-hidden="true">⚔️</span>Wars</a>
+			<a href="no.html?view=laws"><span aria-hidden="true">⚖️</span>Laws</a>
+			<a class="flag-button flag-china" href="no.html?country=china"><span aria-hidden="true">🇨🇳</span><span class="flag-name">China</span></a>
+			<a class="flag-button flag-saudi" href="no.html?country=saudi-arabia"><span aria-hidden="true">🇸🇦</span><span class="flag-name">Saudi Arabia</span></a>
+			<a class="flag-button flag-turkiye" href="no.html?country=turkiye"><span aria-hidden="true">🇹🇷</span><span class="flag-name">Türkiye</span></a>
+			<a class="flag-button flag-azerbaijan" href="no.html?country=azerbaijan"><span aria-hidden="true">🇦🇿</span><span class="flag-name">Azerbaijan</span></a>
+			<a class="flag-button flag-uae" href="no.html?country=uae"><span aria-hidden="true">🇦🇪</span><span class="flag-name">UAE</span></a>
+			<a class="flag-button flag-qatar" href="no.html?country=qatar"><span aria-hidden="true">🇶🇦</span><span class="flag-name">Qatar</span></a>
+			<a class="flag-button flag-united-states" href="no.html?country=united-states"><span aria-hidden="true">🇺🇸</span><span class="flag-name">United States</span></a>
+			<a class="flag-button flag-united-kingdom" href="no.html?country=united-kingdom"><span aria-hidden="true">🇬🇧</span><span class="flag-name">United Kingdom</span></a>
+		</nav>
+	</header>
+	<main id="top">
+		<div class="hero">
+			<p class="eyebrow">South Asia · Founded 1947</p>
+			<h1>History of Pakistan</h1>
+			<p class="hero-copy">Pakistan is a country shaped by ancient civilizations, the movement for a separate homeland, and the many languages and cultures of its people. Its story reaches from the Indus Valley to a modern nation at the crossroads of South and Central Asia.</p>
+			<a class="hero-link" href="#timeline">Explore the timeline ↓</a>
+		</div>
+
+		<section id="timeline" aria-labelledby="timeline-title">
+			<div class="section-heading">
+				<h2 id="timeline-title">A brief timeline</h2>
+				<p>The land that is now Pakistan has been home to settled communities for thousands of years. These milestones offer a starting point, not the whole story.</p>
+			</div>
+			<div class="timeline">
+				<article class="moment">
+					<time>c. 2600–1900 BCE</time>
+					<div><h3>Indus Valley Civilization</h3><p>Major urban centers such as Mohenjo-daro and Harappa flourished along the Indus and its tributaries, with planned streets, craft production, and long-distance trade.</p></div>
+				</article>
+				<article class="moment">
+					<time>711 CE onward</time>
+					<div><h3>Many cultures meet</h3><p>Over centuries, the region became home to diverse peoples, languages, and traditions. Muslim dynasties and later the Mughal Empire left a lasting mark on its history and architecture.</p></div>
+				</article>
+				<article class="moment">
+					<time>1858–1947</time>
+					<div><h3>British rule and the independence movement</h3><p>After the end of East India Company rule, the region was governed by the British Raj. Political movements grew, including the demand for a homeland for Muslims of the subcontinent.</p></div>
+				</article>
+				<article class="moment">
+					<time>14 August 1947</time>
+					<div><h3>Pakistan is founded</h3><p>British India was partitioned and Pakistan became an independent state. The creation of the country was accompanied by mass migration and immense human hardship.</p></div>
+				</article>
+				<article class="moment">
+					<time>1956–1973</time>
+					<div><h3>A republic and a new constitution</h3><p>Pakistan adopted its first constitution in 1956. Following the events of 1971 and the emergence of Bangladesh, the 1973 Constitution established the framework of the present republic.</p></div>
+				</article>
+				<article class="moment">
+					<time>1998–today</time>
+					<div><h3>Pakistan in the modern era</h3><p>Pakistan conducted nuclear tests in 1998. Today it is a federal parliamentary republic whose society, economy, and international relationships continue to evolve.</p></div>
+				</article>
+			</div>
+		</section>
+
+		<section class="partners" id="partners" aria-labelledby="partners-title">
+			<div class="section-heading">
+				<h2 id="partners-title">Pakistan and the world</h2>
+				<p>Explore background on Pakistan's relationships with these countries. Each link opens a country-relations article in a new tab. Partnerships and diplomatic ties change over time; this is a selection, not a definitive list of formal allies.</p>
+			</div>
+			<div class="partner-list">
+				<a href="no.html?country=china"><span class="partner-name"><span aria-hidden="true">🇨🇳</span>China</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=saudi-arabia"><span class="partner-name"><span aria-hidden="true">🇸🇦</span>Saudi Arabia</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=turkiye"><span class="partner-name"><span aria-hidden="true">🇹🇷</span>Türkiye</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=azerbaijan"><span class="partner-name"><span aria-hidden="true">🇦🇿</span>Azerbaijan</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=uae"><span class="partner-name"><span aria-hidden="true">🇦🇪</span>United Arab Emirates</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=qatar"><span class="partner-name"><span aria-hidden="true">🇶🇦</span>Qatar</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=united-states"><span class="partner-name"><span aria-hidden="true">🇺🇸</span>United States</span><span aria-hidden="true">→</span></a>
+				<a href="no.html?country=united-kingdom"><span class="partner-name"><span aria-hidden="true">🇬🇧</span>United Kingdom</span><span aria-hidden="true">→</span></a>
+			</div>
+			<p class="note">This page is free to use and uses no paid assets or libraries. For further reading: <a href="https://www.britannica.com/place/Pakistan" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica: Pakistan</a> · <a href="https://whc.unesco.org/en/list/138/" target="_blank" rel="noopener noreferrer">UNESCO: Archaeological Ruins at Moenjodaro</a>.</p>
+		</section>
+		<footer>Northlight · An introduction to Pakistan's history and international relationships</footer>
+	</main>
+	<main id="wars-page" hidden>
+		<div class="hero">
+			<p class="eyebrow">Pakistan · Conflict and history</p>
+			<h1>Wars and armed conflicts</h1>
+			<p class="hero-copy">An overview of major wars involving Pakistan, alongside significant border clashes and internal armed conflicts. These events had different causes and outcomes, and brought profound loss and displacement to civilians.</p>
+		</div>
+		<section aria-labelledby="wars-title">
+			<div class="section-heading">
+				<h2 id="wars-title">Wars and conflicts</h2>
+				<p>Entries are in chronological order. Some were declared wars between states; others were limited military confrontations or internal insurgencies. This overview covers major conflicts, not every operation or skirmish.</p>
+			</div>
+			<div class="timeline">
+				<article class="moment">
+					<time>1947–1949</time>
+					<div><h3>First Kashmir War</h3><p>Fighting between India and Pakistan began in 1947 over the princely state of Jammu and Kashmir, whose accession was disputed. A UN-backed ceasefire took effect on 1 January 1949, leaving the territory divided and its political status unresolved.</p></div>
+				</article>
+				<article class="moment">
+					<time>1965</time>
+					<div><h3>Second India–Pakistan War</h3><p>Major fighting took place across the international border and in Kashmir. A UN-brokered ceasefire ended the war, and the two governments later signed the Tashkent Declaration in January 1966.</p></div>
+				</article>
+				<article class="moment">
+					<time>1971</time>
+					<div><h3>India–Pakistan War and the creation of Bangladesh</h3><p>After a severe political crisis and conflict in East Pakistan, war between India and Pakistan ended with the surrender of Pakistani forces in Dhaka. Bangladesh became independent. The period involved immense human suffering and displacement.</p></div>
+				</article>
+				<article class="moment">
+					<time>1984–present</time>
+					<div><h3>Siachen conflict</h3><p>India and Pakistan deployed forces to the Siachen Glacier in a dispute over the boundary's interpretation. A 2003 ceasefire greatly reduced firing, but troops have remained deployed in the high-altitude region, where severe weather has caused many deaths.</p></div>
+				</article>
+				<article class="moment">
+					<time>1999</time>
+					<div><h3>Kargil conflict</h3><p>Indian and Pakistani forces fought in the Kargil district near the Line of Control in Kashmir. The conflict ended after Pakistan withdrew its forces amid international diplomatic pressure.</p></div>
+				</article>
+				<article class="moment">
+					<time>1948–present, episodic</time>
+					<div><h3>Balochistan insurgencies</h3><p>Several waves of armed rebellion have taken place in Balochistan, including episodes beginning in 1948, 1958, 1963, 1973, and the early 2000s. The conflicts involve separatist groups and the Pakistani state, with political, economic, and security dimensions.</p></div>
+				</article>
+				<article class="moment">
+					<time>2004–present</time>
+					<div><h3>Militancy and counterinsurgency in the northwest</h3><p>Militant groups and Pakistani security forces have fought across parts of Khyber Pakhtunkhwa and the former tribal districts. Attacks and military operations have caused significant civilian casualties and displacement. This is an internal armed conflict, not a war between countries.</p></div>
+				</article>
+				<article class="moment">
+					<time>January 2024</time>
+					<div><h3>Iran–Pakistan cross-border strikes</h3><p>Iran and Pakistan exchanged strikes across their border, with each government saying it targeted militant groups. Both countries condemned the other's actions as violations of sovereignty, then moved to restore diplomatic relations. This was a brief military exchange, not a declared war.</p></div>
+				</article>
+				<article class="moment">
+					<time>May 2025</time>
+					<div><h3>India–Pakistan military conflict</h3><p>Following a deadly attack in Kashmir, India and Pakistan exchanged missile, drone, and artillery strikes over several days. A ceasefire was announced on 10 May. The countries reported casualties and disputed claims about damage and military losses.</p></div>
+				</article>
+			</div>
+			<p class="note">Further reading: <a href="https://www.britannica.com/topic/Indo-Pakistani-wars" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica: Indo-Pakistani wars</a> · <a href="https://unmogip.unmissions.org/" target="_blank" rel="noopener noreferrer">United Nations Military Observer Group in India and Pakistan</a> · <a href="https://en.wikipedia.org/wiki/2024_Iran%E2%80%93Pakistan_conflict" target="_blank" rel="noopener noreferrer">2024 Iran–Pakistan conflict</a> · <a href="https://en.wikipedia.org/wiki/2025_India%E2%80%93Pakistan_conflict" target="_blank" rel="noopener noreferrer">2025 India–Pakistan conflict</a>.</p>
+			<a class="back-link" href="no.html">← Back to Pakistan's history</a>
+		</section>
+		<footer>Northlight · An introduction to Pakistan's history and international relationships</footer>
+	</main>
+	<main id="laws-page" hidden>
+		<div class="hero">
+			<p class="eyebrow">Pakistan · Constitution and legislation</p>
+			<h1>Pakistan's laws, 1947–2026</h1>
+			<p class="hero-copy">Pakistan's legal system has changed through new constitutions, constitutional amendments, parliamentary Acts, and provincial legislation. This guide explains how those changes are made and highlights major milestones through October 2026.</p>
+		</div>
+		<section aria-labelledby="law-process-title">
+			<div class="section-heading">
+				<h2 id="law-process-title">How laws are made</h2>
+				<p>The Constitution sets the rules for legislation. Federal and provincial laws follow different routes, and constitutional amendments require a higher threshold than ordinary Acts.</p>
+			</div>
+			<div class="timeline">
+				<article class="moment">
+					<time>Federal bill</time>
+					<div><h3>Proposal, debate, and votes</h3><p>A bill may be introduced by the government or a member of Parliament. It is debated, may be examined by a committee, and is voted on. Most federal bills must pass both the National Assembly and Senate; money bills have a special procedure and begin in the National Assembly.</p></div>
+				</article>
+				<article class="moment">
+					<time>Assent and publication</time>
+					<div><h3>A bill becomes an Act</h3><p>After Parliament passes a bill, it is sent to the President for assent under the Constitution. Once enacted and published, it becomes federal law. Provincial assemblies make laws within their constitutional powers, with the required provincial assent.</p></div>
+				</article>
+				<article class="moment">
+					<time>Constitutional change</time>
+					<div><h3>A higher voting threshold</h3><p>Under Article 239, a constitutional amendment must be passed by at least two-thirds of the total membership of each House of Parliament and receive presidential assent. An amendment changing a province's boundaries also needs approval by at least two-thirds of that province's assembly.</p></div>
+				</article>
+				<article class="moment">
+					<time>When Parliament is not sitting</time>
+					<div><h3>Temporary ordinances</h3><p>The Constitution permits the President to promulgate an ordinance when Parliament is not in session and immediate action is necessary. Ordinances are temporary and must be placed before Parliament; they are not a substitute for a permanent Act.</p></div>
+				</article>
+			</div>
+		</section>
+		<section aria-labelledby="law-timeline-title">
+			<div class="section-heading">
+				<h2 id="law-timeline-title">Legal milestones</h2>
+				<p>A selected constitutional timeline, not a catalogue of every federal and provincial statute. Constitutional amendments change the Constitution; ordinary Acts create or update laws under it.</p>
+			</div>
+			<div class="timeline">
+				<article class="moment">
+					<time>1947</time>
+					<div><h3>Independence and interim legal framework</h3><p>The Indian Independence Act created the new dominions. Pakistan initially adapted the Government of India Act 1935 as its interim constitutional framework, while many existing laws continued until replaced or amended.</p></div>
+				</article>
+				<article class="moment">
+					<time>1949</time>
+					<div><h3>Objectives Resolution</h3><p>Pakistan's Constituent Assembly adopted the Objectives Resolution, setting out principles to guide constitution-making. It later became a substantive constitutional provision through the Eighth Amendment in 1985.</p></div>
+				</article>
+				<article class="moment">
+					<time>1956</time>
+					<div><h3>First Constitution</h3><p>The Constituent Assembly enacted Pakistan's first constitution, which took effect on 23 March. It made Pakistan a republic with a parliamentary system. The constitution was abrogated after the 1958 military coup.</p></div>
+				</article>
+				<article class="moment">
+					<time>1962–1970</time>
+					<div><h3>Presidential constitution and transition</h3><p>A new constitution introduced a presidential system in 1962. It was suspended in 1969. The 1970 Legal Framework Order then set rules for elections and the proposed constitution-making process.</p></div>
+				</article>
+				<article class="moment">
+					<time>1973</time>
+					<div><h3>The current Constitution</h3><p>Elected representatives negotiated and approved the Constitution in Parliament on 10 April; it came into force on 14 August. It established a federal parliamentary system, fundamental rights, and a procedure for future amendments.</p></div>
+				</article>
+				<article class="moment">
+					<time>1974</time>
+					<div><h3>Second Amendment</h3><p>Parliament passed the Second Amendment, changing the Constitution's definition of who is Muslim and legally classifying Ahmadis as non-Muslims. It remains a significant and contested change in Pakistan's constitutional history.</p></div>
+				</article>
+				<article class="moment">
+					<time>1985</time>
+					<div><h3>Eighth Amendment</h3><p>The amendment restored the Constitution after military rule and validated a range of earlier actions. It also strengthened presidential powers, including the power to dissolve the National Assembly.</p></div>
+				</article>
+				<article class="moment">
+					<time>1997–2003</time>
+					<div><h3>Presidential powers shift again</h3><p>The Thirteenth Amendment in 1997 removed the President's power to dismiss the National Assembly. The Seventeenth Amendment in 2003 restored that power in modified form after another period of military rule.</p></div>
+				</article>
+				<article class="moment">
+					<time>2010</time>
+					<div><h3>Eighteenth Amendment</h3><p>A broad parliamentary amendment restored a stronger parliamentary system, transferred many subjects to the provinces, and renamed the North-West Frontier Province as Khyber Pakhtunkhwa.</p></div>
+				</article>
+				<article class="moment">
+					<time>2018</time>
+					<div><h3>Twenty-fifth Amendment</h3><p>Parliament and the provincial assembly approved the merger of the former Federally Administered Tribal Areas with Khyber Pakhtunkhwa, changing constitutional and administrative arrangements for the region.</p></div>
+				</article>
+				<article class="moment">
+					<time>2024</time>
+					<div><h3>Twenty-sixth Amendment</h3><p>Parliament enacted changes to judicial appointments and constitutional case procedures, including a new process for selecting the Chief Justice of Pakistan and constitutional benches.</p></div>
+				</article>
+				<article class="moment">
+					<time>2025</time>
+					<div><h3>Twenty-seventh Amendment</h3><p>Parliament passed the amendment on 13 November. It established a Federal Constitutional Court and changed provisions on judicial structure and military command, including Article 243.</p></div>
+				</article>
+				<article class="moment">
+					<time>2026</time>
+					<div><h3>New Acts under the amended Constitution</h3><p>Parliament continued passing ordinary legislation. Examples listed by the National Assembly include the Finance Act 2026 and the Defense Forces of Pakistan Act 2026. These Acts are statutes, not a new constitution or constitutional amendment; the official Acts index is current through 1 October 2026.</p></div>
+				</article>
+			</div>
+			<p class="note">Official records and further reading: <a href="https://na.gov.pk/en/acts.php" target="_blank" rel="noopener noreferrer">National Assembly of Pakistan: Acts of Parliament</a> · <a href="https://na.gov.pk/en/content.php?id=75" target="_blank" rel="noopener noreferrer">National Assembly: Parliamentary history</a> · <a href="https://en.wikipedia.org/wiki/Constitution_of_Pakistan" target="_blank" rel="noopener noreferrer">Constitution of Pakistan and amendments</a>.</p>
+			<a class="back-link" href="no.html">← Back to Pakistan's history</a>
+		</section>
+		<footer>Northlight · An introduction to Pakistan's history and international relationships</footer>
+	</main>
+	<main id="country-page" hidden>
+		<div class="hero">
+			<p class="eyebrow">Pakistan's international relationships</p>
+			<h1 id="country-title"></h1>
+			<p class="hero-copy" id="country-summary"></p>
+			<a class="hero-link" id="country-source" target="_blank" rel="noopener noreferrer">Read more about the relationship ↗</a>
+		</div>
+		<section aria-labelledby="interactions-title">
+			<div class="section-heading">
+				<h2 id="interactions-title">Selected interactions</h2>
+				<p>A few milestones illustrating how the relationship has developed. This overview is not a complete record of diplomatic, economic, or cultural exchanges.</p>
+			</div>
+			<div class="timeline" id="country-milestones"></div>
+			<a class="back-link" href="no.html">← Back to Pakistan's history</a>
+		</section>
+		<footer>Northlight · An introduction to Pakistan's history and international relationships</footer>
+	</main>
+	<script>
+		const countryRelations = {
+			china: {
+				name: "Pakistan and China",
+				summary: "Pakistan and China have maintained diplomatic relations since 1951. Their relationship includes regular political engagement, economic cooperation, and the China–Pakistan Economic Corridor.",
+				article: "Pakistan%E2%80%93China_relations",
+				milestones: [
+					["1951", "Diplomatic relations", "Pakistan and the People's Republic of China established diplomatic relations."],
+					["1963", "Boundary agreement", "The two countries signed an agreement on their boundary in the northern region."],
+					["2015", "Economic corridor", "The China–Pakistan Economic Corridor was formally launched as a framework for infrastructure, energy, and trade projects."]
+				]
+			},
+			"saudi-arabia": {
+				name: "Pakistan and Saudi Arabia",
+				summary: "Pakistan and Saudi Arabia have longstanding ties shaped by diplomacy, religious connections, trade, energy cooperation, and a large Pakistani community living and working in the Kingdom.",
+				article: "Pakistan%E2%80%93Saudi_Arabia_relations",
+				milestones: [
+					["1947", "Diplomatic ties", "Saudi Arabia and the newly independent Pakistan established diplomatic relations."],
+					["1970s onward", "Growing people-to-people ties", "Pakistani workers increasingly joined the Kingdom's workforce, strengthening family, cultural, and economic connections."],
+					["Today", "Continuing cooperation", "The countries maintain high-level engagement and cooperation in areas including trade, energy, and regional diplomacy."]
+				]
+			},
+			turkiye: {
+				name: "Pakistan and Türkiye",
+				summary: "Pakistan and Türkiye describe their relationship as close and friendly. It spans diplomatic support, trade, education, cultural exchange, and defense cooperation.",
+				article: "Pakistan%E2%80%93Turkey_relations",
+				milestones: [
+					["1947", "Diplomatic relations", "Türkiye recognized Pakistan soon after independence, and the two countries established diplomatic ties."],
+					["1950s", "Regional cooperation", "Both countries took part in regional security cooperation during the Cold War period."],
+					["Today", "Broad partnership", "High-level visits and agreements support cooperation in trade, culture, education, and defense."]
+				]
+			},
+			azerbaijan: {
+				name: "Pakistan and Azerbaijan",
+				summary: "Pakistan and Azerbaijan have developed diplomatic ties since Azerbaijan's independence. Their relationship includes political support, economic engagement, and cooperation in energy and defense.",
+				article: "Pakistan%E2%80%93Azerbaijan_relations",
+				milestones: [
+					["1992", "Diplomatic relations", "Pakistan established diplomatic relations with the newly independent Republic of Azerbaijan."],
+					["2000s onward", "Closer bilateral engagement", "The two countries expanded official visits and cooperation through bilateral agreements."],
+					["Today", "Trade and regional ties", "Energy, defense, trade, and coordination in international forums remain areas of engagement."]
+				]
+			},
+			uae: {
+				name: "Pakistan and the United Arab Emirates",
+				summary: "Pakistan and the UAE share longstanding diplomatic, trade, and cultural links. A large Pakistani community in the Emirates is an important part of the relationship.",
+				article: "Pakistan%E2%80%93United_Arab_Emirates_relations",
+				milestones: [
+					["1971", "Relations with the UAE", "Pakistan established relations with the United Arab Emirates following its formation."],
+					["1970s onward", "Community connections", "Pakistani residents and workers have contributed to close family, cultural, and economic links between the countries."],
+					["Today", "Economic partnership", "Trade, investment, development cooperation, and regular diplomatic engagement are central parts of the relationship."]
+				]
+			},
+			qatar: {
+				name: "Pakistan and Qatar",
+				summary: "Pakistan and Qatar maintain diplomatic and economic ties, with energy, trade, investment, and the Pakistani community in Qatar among the important links between the countries.",
+				article: "Pakistan%E2%80%93Qatar_relations",
+				milestones: [
+					["1970", "Diplomatic relations", "Pakistan and Qatar established diplomatic relations."],
+					["Following decades", "Energy and employment", "Energy trade and the Pakistani workforce helped deepen economic and people-to-people links."],
+					["Today", "Ongoing engagement", "The countries continue cooperation through official visits, trade, investment, and regional diplomacy."]
+				]
+			},
+			"united-states": {
+				name: "Pakistan and the United States",
+				summary: "Pakistan and the United States have a complex relationship that has included security cooperation, economic and educational links, disagreements, and periods of changing priorities.",
+				article: "Pakistan%E2%80%93United_States_relations",
+				milestones: [
+					["1947", "Diplomatic relations", "The United States recognized Pakistan shortly after its independence."],
+					["1950s", "Security agreements", "Pakistan joined Cold War-era regional defense arrangements that included the United States."],
+					["2001 onward", "Cooperation and differences", "The countries worked together on security issues while also experiencing significant policy disagreements."]
+				]
+			},
+			"united-kingdom": {
+				name: "Pakistan and the United Kingdom",
+				summary: "Pakistan and the United Kingdom share historical ties dating to independence, alongside strong contemporary connections through migration, education, trade, and the Commonwealth.",
+				article: "Pakistan%E2%80%93United_Kingdom_relations",
+				milestones: [
+					["1947", "Diplomatic relations", "The United Kingdom and Pakistan established relations when Pakistan became independent."],
+					["Commonwealth", "Shared institution", "Pakistan and the UK have both been members of the Commonwealth, with Pakistan's membership interrupted and later renewed."],
+					["Today", "People and trade", "A large British-Pakistani community supports close links in education, culture, business, and family life."]
+				]
+			}
+		};
+
+		const selectedCountry = new URLSearchParams(window.location.search).get("country");
+		const selectedView = new URLSearchParams(window.location.search).get("view");
+		const relation = countryRelations[selectedCountry];
+
+		if (selectedView === "wars") {
+			document.querySelector("#top").hidden = true;
+			document.querySelector("#wars-page").hidden = false;
+			document.title = "Wars and Armed Conflicts | History of Pakistan";
+		} else if (selectedView === "laws") {
+			document.querySelector("#top").hidden = true;
+			document.querySelector("#laws-page").hidden = false;
+			document.title = "Pakistan's Laws, 1947–2026 | History of Pakistan";
+		} else if (relation) {
+			const historyPage = document.querySelector("#top");
+			const countryPage = document.querySelector("#country-page");
+			historyPage.hidden = true;
+			countryPage.hidden = false;
+			document.title = `${relation.name} | History of Pakistan`;
+			document.querySelector("#country-title").textContent = relation.name;
+			document.querySelector("#country-summary").textContent = relation.summary;
+			document.querySelector("#country-source").href = `https://en.wikipedia.org/wiki/${relation.article}`;
+			document.querySelector("#country-milestones").innerHTML = relation.milestones.map(([date, title, detail]) =>
+				`<article class="moment"><time>${date}</time><div><h3>${title}</h3><p>${detail}</p></div></article>`
+			).join("");
+		}
+	</script>
+</body>
+</html>
